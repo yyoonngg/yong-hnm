@@ -92,6 +92,7 @@ body{
   right: 25px;
   margin-left: 50px;
   text-decoration: none;
+  color: black;
 }
 .open-button{
   position: relative;
