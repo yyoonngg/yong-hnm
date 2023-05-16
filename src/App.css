@@ -1,38 +1,147 @@
-.App {
-  text-align: center;
+body{
+  font-family: sans-serif;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.nav-header{
+  display: flex;
+  justify-content: flex-end;
+  margin-right: 40px;
+  margin-top: 40px;
+  cursor: pointer;
+}
+.logo-area{
+  display: flex;
+  justify-content: center;
+  
+}
+.logo{
+  cursor: pointer;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.menu-list{
+  list-style: none;
+  display: flex;
+  justify-content: center;
+}
+.menu-list li{
+  margin: 10px;
+  cursor: pointer;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.nav-bar{
+  display: flex;
+  justify-content: center;
+}
+.login-icon{
+  position: relative;
+  top: 3px;
+  margin-right: 5px;
+}
+.login-area{
+  display: flex;
+}
+
+.input-area{
+  display: flex;
+  position: absolute;
+  right: 20px;
+  border-bottom: 2px solid black;
+  padding-bottom: 5px;
+}
+.input-box{
+  border: none;
+  margin-left: 5px;
+}
+.input-box:focus{
+  outline: none;
+}
+
+.choice{
+  font-size: 11px;
+  height: 20px;
+  color: #63786a;
+  font-weight: 700;
+}
+.new-product{
+  font-size: 11px;
+  height: 20px;
+}
+.product-card{
+  cursor: pointer;
+}
+
+.detail-image{
+  display: flex;
+  justify-content: flex-end;
+  width: 100%;
+}
+.detail-button{
+  width: 100%;
+}
+.product-info{
+  font-size: 20px;
+  margin-bottom: 10px;
+}
+
+.close-button{
+  background : none;
+  border: none;
+  font-size: 36px;
+  position: absolute;
+  top: 0;
+  right: 25px;
+  margin-left: 50px;
+}
+.open-button{
+  position: relative;
+  display: none;
+}
+.side-menu-area{
+  background-color: burlywood;
+  width: 250px;
+  height: 100%;
+  position: fixed;
+  z-index: 1;
+  top:0;
+  left:0;
+  overflow: hidden;
+  transition: 0.5s;
+  padding-top: 60px;
+}
+.side-menu-list{
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+}
+.side-menu-list button{
+  background: none;
+  border: none;
+  width: 120px;
+  margin: 5px;
 }
 
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+@media screen and (max-width:63rem){
+  .input-area{
+    display: none;
   }
-  to {
-    transform: rotate(360deg);
+  .nav-bar{
+    display: none;
   }
+  .product-card{
+    display: flex;
+    flex-direction: column;
+  }
+  .logo{
+    margin-bottom: 30px;
+  }
+  .nav-header{
+    margin-top: 20px;
+    margin-right: 20px;
+    margin-left: 20px;
+    justify-content: space-between;
+  }
+  .open-button{
+    display: inline;
+  }
+  
 }
