@@ -91,6 +91,7 @@ body{
   top: 0;
   right: 25px;
   margin-left: 50px;
+  text-decoration: none;
 }
 .open-button{
   position: relative;
