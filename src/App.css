@@ -118,6 +118,8 @@ body{
   border: none;
   width: 120px;
   margin: 5px;
+  text-decoration: none;
+  color: black;
 }
 
 @media screen and (max-width:63rem){
@@ -142,6 +144,9 @@ body{
   }
   .open-button{
     display: inline;
+  }
+  .detail-image{
+    justify-content: center;
   }
   
 }
