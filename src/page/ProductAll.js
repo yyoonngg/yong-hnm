@@ -12,7 +12,7 @@ const ProductAll = () => {
     try {
       setError(""); //홈버튼 눌렀을 때 에러메시지가 계속 보이지 않도록
       let keyword = query.get("q") || "";
-      let url = `http://localhost:5000/products?q=${keyword}`;
+      let url = `https://my-json-server.typicode.com/yyoonngg/yong-hnm/products?q=${keyword}`;
       let response = await fetch(url);
       let data = await response.json();
       if (data.length < 1) {
