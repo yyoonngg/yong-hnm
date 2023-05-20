@@ -16,6 +16,7 @@ function getProducts(keyword) {
 }
 
 function getDetailProducts(params) {
+  
   return async (dispatch, getState) => {
     let url = `https://my-json-server.typicode.com/yyoonngg/yong-hnm/products/${params.id}`;
     let response = await fetch(url);
