@@ -2,29 +2,21 @@ import React, { useEffect, useState } from "react";
 import { Col, Container, Row, Alert } from "react-bootstrap";
 import ProductCard from "../component/ProductCard";
 import { useSearchParams } from "react-router-dom";
+import { productAction } from "../redux/actions/productAction";
+import { useDispatch, useSelector } from "react-redux";
 
 const ProductAll = () => {
-  const [products, setProducts] = useState([]);
+  const products = useSelector((state) => state.product.products);
   const [query, setQuery] = useSearchParams();
-  let [error, setError] = useState("");
+  const error = useSelector((state) => state.product.error);
+  const dispatch = useDispatch();
 
-  const getProducts = async () => {
+  const getProducts = () => {
     try {
-      setError(""); //홈버튼 눌렀을 때 에러메시지가 계속 보이지 않도록
       let keyword = query.get("q") || "";
-      let url = `https://my-json-server.typicode.com/yyoonngg/yong-hnm/products?q=${keyword}`;
-      let response = await fetch(url);
-      let data = await response.json();
-      if (data.length < 1) {
-        if (keyword !== "") {
-          throw new Error(`${keyword}와 일치하는 상품이 없습니다`);
-        } else {
-          throw new Error("결과가 없습니다");
-        }
-      }
-      setProducts(data);
+      dispatch(productAction.getProducts(keyword));
     } catch (err) {
-      setError(err.message);
+      dispatch({type:"ERROR", payload: err.message});
     }
   };
 

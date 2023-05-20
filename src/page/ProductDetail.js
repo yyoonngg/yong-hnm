@@ -1,21 +1,22 @@
 import React, { useEffect, useState } from "react";
 import { Col, Container, Row, Button, Dropdown, Alert } from "react-bootstrap";
+import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
+import { productAction } from "../redux/actions/productAction";
 
 const ProductDetail = () => {
-  const [error, setError] = useState();
+  const error = useSelector((state) => state.product.error);
+  const dispatch = useDispatch();
   let params = useParams();
-  const [detailProduct, setDetailProduct] = useState([]);
+  const detailProduct = useSelector((state) => state.product.detailProduct);
   const [size, setSize] = useState(null);
 
-  const getProductDetail = async () => {
+  const getProductDetail = () => {
     try {
-      let url = `https://my-json-server.typicode.com/yyoonngg/yong-hnm/products/${params.id}`;
-      let response = await fetch(url);
-      let data = await response.json();
-      setDetailProduct(data);
+      dispatch(productAction.getDetailProducts(params));
     } catch (err) {
-      setError(err.message);
+      console.log(err)
+      dispatch({ type: "ERROR", payload: err });
     }
   };
 
@@ -45,7 +46,7 @@ const ProductDetail = () => {
 
             <Dropdown className="mt-3">
               <Dropdown.Toggle variant="outline-dark" id="dropdown-basic">
-                {size==null?"사이즈 선택":size}
+                {size == null ? "사이즈 선택" : size}
               </Dropdown.Toggle>
               <Dropdown.Menu>
                 <Dropdown.Item onClick={sizeSelect}>S</Dropdown.Item>

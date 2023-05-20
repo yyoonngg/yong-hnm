@@ -3,7 +3,9 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faUser } from "@fortawesome/free-regular-svg-icons";
 import { faBars, faMagnifyingGlass } from "@fortawesome/free-solid-svg-icons";
 import { useNavigate } from "react-router-dom";
-const Navbar = ({ authenticate, setAuthenticate }) => {
+import { useDispatch, useSelector } from "react-redux";
+const Navbar = () => {
+  const authenticate = useSelector((state) => state.auth.authenticate);
   const menuList = [
     "여성",
     "Divided",
@@ -15,7 +17,7 @@ const Navbar = ({ authenticate, setAuthenticate }) => {
     "지속가능성",
   ];
   const navigate = useNavigate();
-
+  const dispatch = useDispatch();
   const [input, setInput] = useState("");
   const search = (event) => {
     if (event.key === "Enter") {
@@ -32,7 +34,7 @@ const Navbar = ({ authenticate, setAuthenticate }) => {
     if (authenticate == false) {
       navigate(`/login`);
     } else {
-      setAuthenticate(false);
+      dispatch({type:"LOGOUT_SUCCESS"})
       navigate("/");
     }
   };

@@ -1,13 +1,14 @@
-import './App.css';
-import 'bootstrap/dist/css/bootstrap.min.css';
-import { Route, Routes } from 'react-router-dom';
-import ProductAll from './page/ProductAll';
-import Login from './page/Login';
-import Navbar from './component/Navbar';
-import { useState } from 'react';
-import PrivateRoute from './route/PrivateRoute';
+import "./App.css";
+import "bootstrap/dist/css/bootstrap.min.css";
+import { Route, Routes } from "react-router-dom";
+import ProductAll from "./page/ProductAll";
+import Login from "./page/Login";
+import Navbar from "./component/Navbar";
+import { useState } from "react";
+import PrivateRoute from "./route/PrivateRoute";
+import { useSelector } from "react-redux";
 
-// 1. 전체상품페이지, 로그인페이지, 상품상세페이지 o 
+// 1. 전체상품페이지, 로그인페이지, 상품상세페이지 o
 // 1-1. nav바 o
 // 2. 전체 상품 페이지에서는 전체 상품을 볼 수 있다. o
 // 3. 로그인 버튼을 누르면, 로그인 페이지가 나온다. o
@@ -18,17 +19,19 @@ import PrivateRoute from './route/PrivateRoute';
 // 8. 로그인을 하면 로그아웃이 보이고, 로그아웃을 하면 로그인이 보인다. o
 // 9. 상품을 검색할 수 있다. o
 // 10. 로고를 누르면 홈페이지로 o
-// 11. 사이드 메뉴(모바일) o 
+// 11. 사이드 메뉴(모바일) o
 
 function App() {
-  const [authenticate, setAuthenticate] = useState(false);
   return (
     <div>
-      <Navbar authenticate={authenticate} setAuthenticate={setAuthenticate}/>
+      <Navbar/>
       <Routes>
-        <Route path='/' element={<ProductAll/>}/>
-        <Route path='/login' element={<Login setAuthenticate={setAuthenticate}/>}/>
-        <Route path='/products/:id' element={<PrivateRoute authenticate={authenticate}/>}/>
+        <Route path="/" element={<ProductAll />} />
+        <Route path="/login" element={<Login />} />
+        <Route
+          path="/products/:id"
+          element={<PrivateRoute />}
+        />
       </Routes>
     </div>
   );
