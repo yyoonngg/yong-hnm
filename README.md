@@ -7,7 +7,7 @@
 * React Bootstrap
 * json-server
 * React Router
-* Redux
+* Redux Toolkit
 
 ## 기능
 * 전체 상품보기
