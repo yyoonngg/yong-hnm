@@ -4,6 +4,8 @@ import { faUser } from "@fortawesome/free-regular-svg-icons";
 import { faBars, faMagnifyingGlass } from "@fortawesome/free-solid-svg-icons";
 import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
+import { authenticateActions } from "../redux/reducers/authenticateReducer";
+
 const Navbar = () => {
   const authenticate = useSelector((state) => state.auth.authenticate);
   const menuList = [
@@ -34,7 +36,8 @@ const Navbar = () => {
     if (authenticate == false) {
       navigate(`/login`);
     } else {
-      dispatch({type:"LOGOUT_SUCCESS"})
+      //dispatch({type:"LOGOUT_SUCCESS"})
+      dispatch(authenticateActions.logoutSuccess());
       navigate("/");
     }
   };
@@ -72,7 +75,8 @@ const Navbar = () => {
         </div>
       </div>
       <div className="logo-area">
-        <img className="logo"
+        <img
+          className="logo"
           onClick={goToHome}
           width={100}
           src="https://logos-world.net/wp-content/uploads/2020/04/HM-Logo-1999-present.jpg"
